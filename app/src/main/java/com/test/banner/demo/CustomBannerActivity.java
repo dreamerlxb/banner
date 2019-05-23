@@ -1,6 +1,7 @@
 package com.test.banner.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 import com.test.banner.App;
@@ -10,7 +11,8 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
 public class CustomBannerActivity extends AppCompatActivity {
-    Banner banner1,banner2,banner3;
+    Banner banner1, banner2, banner3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
