@@ -1,6 +1,6 @@
 package com.youth.banner;
 
-import android.support.v4.view.ViewPager.PageTransformer;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
 
 import com.youth.banner.transformer.AccordionTransformer;
 import com.youth.banner.transformer.BackgroundToForegroundTransformer;
@@ -18,7 +18,7 @@ import com.youth.banner.transformer.StackTransformer;
 import com.youth.banner.transformer.TabletTransformer;
 import com.youth.banner.transformer.ZoomInTransformer;
 import com.youth.banner.transformer.ZoomOutSlideTransformer;
-import com.youth.banner.transformer.ZoomOutTranformer;
+import com.youth.banner.transformer.ZoomOutTransformer;
 
 public class Transformer {
     public static Class<? extends PageTransformer> Default = DefaultTransformer.class;
@@ -36,6 +36,6 @@ public class Transformer {
     public static Class<? extends PageTransformer> Stack = StackTransformer.class;
     public static Class<? extends PageTransformer> Tablet = TabletTransformer.class;
     public static Class<? extends PageTransformer> ZoomIn = ZoomInTransformer.class;
-    public static Class<? extends PageTransformer> ZoomOut = ZoomOutTranformer.class;
+    public static Class<? extends PageTransformer> ZoomOut = ZoomOutTransformer.class;
     public static Class<? extends PageTransformer> ZoomOutSlide = ZoomOutSlideTransformer.class;
 }

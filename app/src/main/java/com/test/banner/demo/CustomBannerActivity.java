@@ -1,6 +1,6 @@
 package com.test.banner.demo;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.test.banner.App;
@@ -15,9 +15,9 @@ public class CustomBannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_banner);
-        banner1 = (Banner) findViewById(R.id.banner1);
-        banner2 = (Banner) findViewById(R.id.banner2);
-        banner3 = (Banner) findViewById(R.id.banner3);
+        banner1 = findViewById(R.id.banner1);
+        banner2 = findViewById(R.id.banner2);
+        banner3 = findViewById(R.id.banner3);
 
         banner1.setImages(App.images)
                 .setImageLoader(new GlideImageLoader())

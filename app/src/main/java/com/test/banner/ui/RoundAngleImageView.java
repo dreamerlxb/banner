@@ -2,7 +2,6 @@ package com.test.banner.ui;
 
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,10 +11,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 
-public class RoundAngleImageView extends ImageView {
+public class RoundAngleImageView extends AppCompatImageView {
 
     private Paint paint;
     private int roundWidth = 5;
@@ -67,8 +67,8 @@ public class RoundAngleImageView extends ImageView {
         path.arcTo(new RectF(
                         0,
                         0,
-                        roundWidth*2,
-                        roundHeight*2),
+                        roundWidth * 2,
+                        roundHeight * 2),
                 -90,
                 -90);
         path.close();
@@ -77,13 +77,13 @@ public class RoundAngleImageView extends ImageView {
 
     private void drawLiftDown(Canvas canvas) {
         Path path = new Path();
-        path.moveTo(0, getHeight()-roundHeight);
+        path.moveTo(0, getHeight() - roundHeight);
         path.lineTo(0, getHeight());
         path.lineTo(roundWidth, getHeight());
         path.arcTo(new RectF(
                         0,
-                        getHeight()-roundHeight*2,
-                        0+roundWidth*2,
+                        getHeight() - roundHeight * 2,
+                        0 + roundWidth * 2,
                         getHeight()),
                 90,
                 90);
@@ -93,12 +93,12 @@ public class RoundAngleImageView extends ImageView {
 
     private void drawRightDown(Canvas canvas) {
         Path path = new Path();
-        path.moveTo(getWidth()-roundWidth, getHeight());
+        path.moveTo(getWidth() - roundWidth, getHeight());
         path.lineTo(getWidth(), getHeight());
-        path.lineTo(getWidth(), getHeight()-roundHeight);
+        path.lineTo(getWidth(), getHeight() - roundHeight);
         path.arcTo(new RectF(
-                getWidth()-roundWidth*2,
-                getHeight()-roundHeight*2,
+                getWidth() - roundWidth * 2,
+                getHeight() - roundHeight * 2,
                 getWidth(),
                 getHeight()), 0, 90);
         path.close();
@@ -109,12 +109,12 @@ public class RoundAngleImageView extends ImageView {
         Path path = new Path();
         path.moveTo(getWidth(), roundHeight);
         path.lineTo(getWidth(), 0);
-        path.lineTo(getWidth()-roundWidth, 0);
+        path.lineTo(getWidth() - roundWidth, 0);
         path.arcTo(new RectF(
-                        getWidth()-roundWidth*2,
+                        getWidth() - roundWidth * 2,
                         0,
                         getWidth(),
-                        0+roundHeight*2),
+                        0 + roundHeight * 2),
                 -90,
                 90);
         path.close();

@@ -3,8 +3,8 @@ package com.test.banner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mSwipeLayout = (SuperSwipeRefreshLayout) findViewById(R.id.swipe);
+        mSwipeLayout = findViewById(R.id.swipe);
         mSwipeLayout.setOnRefreshListener(this);
-        listView = (ListView) findViewById(R.id.list);
+        listView = findViewById(R.id.list);
         View header = LayoutInflater.from(this).inflate(R.layout.header, null);
-        banner = (Banner) header.findViewById(R.id.banner);
+        banner = header.findViewById(R.id.banner);
         banner.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, App.H / 4));
         listView.addHeaderView(banner);
 

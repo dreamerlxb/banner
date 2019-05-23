@@ -1,6 +1,7 @@
 package com.test.banner;
 
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 /**
@@ -12,7 +13,7 @@ public class GallyPageTransformer implements ViewPager.PageTransformer {
     private static final float min_scale = 0.85f;
 
     @Override
-    public void transformPage(View page, float position) {
+    public void transformPage(@NonNull View page, float position) {
         float scaleFactor = Math.max(min_scale, 1 - Math.abs(position));
         float rotate = 20 * Math.abs(position);
         if (position < -1) {

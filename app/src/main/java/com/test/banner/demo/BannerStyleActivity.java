@@ -1,6 +1,7 @@
 package com.test.banner.demo;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,15 +13,16 @@ import com.test.banner.loader.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
-public class BannerStyleActivity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
+public class BannerStyleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Banner banner;
     Spinner spinnerStyle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner_style);
-        banner = (Banner) findViewById(R.id.banner);
-        spinnerStyle = (Spinner) findViewById(R.id.spinnerStyle);
+        banner = findViewById(R.id.banner);
+        spinnerStyle = findViewById(R.id.spinnerStyle);
         spinnerStyle.setOnItemSelectedListener(this);
 
         //默认是CIRCLE_INDICATOR
@@ -32,7 +34,7 @@ public class BannerStyleActivity extends AppCompatActivity implements  AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (position){
+        switch (position) {
             case 0:
                 banner.updateBannerStyle(BannerConfig.NOT_INDICATOR);
                 break;

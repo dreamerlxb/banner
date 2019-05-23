@@ -1,7 +1,8 @@
 package com.youth.banner.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -17,6 +18,7 @@ public class BannerViewPager extends ViewPager {
         super(context, attrs);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         if(this.scrollable) {

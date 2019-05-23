@@ -1,8 +1,10 @@
 package com.test.banner.demo;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -30,15 +32,16 @@ import com.youth.banner.transformer.StackTransformer;
 import com.youth.banner.transformer.TabletTransformer;
 import com.youth.banner.transformer.ZoomInTransformer;
 import com.youth.banner.transformer.ZoomOutSlideTransformer;
-import com.youth.banner.transformer.ZoomOutTranformer;
+import com.youth.banner.transformer.ZoomOutTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BannerAnimationActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, OnBannerListener {
     Banner banner;
-    List<Class<? extends ViewPager.PageTransformer>> transformers=new ArrayList<>();
-    public void initData(){
+    List<Class<? extends ViewPager.PageTransformer>> transformers = new ArrayList<>();
+
+    public void initData() {
         transformers.add(DefaultTransformer.class);
         transformers.add(AccordionTransformer.class);
         transformers.add(BackgroundToForegroundTransformer.class);
@@ -54,17 +57,17 @@ public class BannerAnimationActivity extends AppCompatActivity implements Adapte
         transformers.add(StackTransformer.class);
         transformers.add(TabletTransformer.class);
         transformers.add(ZoomInTransformer.class);
-        transformers.add(ZoomOutTranformer.class);
+        transformers.add(ZoomOutTransformer.class);
         transformers.add(ZoomOutSlideTransformer.class);
     }
-   
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner_animation);
         initData();
-        banner = (Banner) findViewById(R.id.banner);
-        ListView listView = (ListView) findViewById(R.id.list);
+        banner = findViewById(R.id.banner);
+        ListView listView = findViewById(R.id.list);
         String[] data = getResources().getStringArray(R.array.anim);
         listView.setAdapter(new SampleAdapter(this, data));
         listView.setOnItemClickListener(this);
@@ -83,6 +86,6 @@ public class BannerAnimationActivity extends AppCompatActivity implements Adapte
 
     @Override
     public void OnBannerClick(int position) {
-        Toast.makeText(getApplicationContext(),"你点击了："+position,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "你点击了：" + position, Toast.LENGTH_SHORT).show();
     }
 }

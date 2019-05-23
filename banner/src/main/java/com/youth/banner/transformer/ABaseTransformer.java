@@ -16,7 +16,8 @@
 
 package com.youth.banner.transformer;
 
-import android.support.v4.view.ViewPager.PageTransformer;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
 import android.view.View;
 
 public abstract class ABaseTransformer implements PageTransformer {
@@ -43,7 +44,7 @@ public abstract class ABaseTransformer implements PageTransformer {
 	 *            center. 1 is one full page position to the right, and -1 is one page position to the left.
 	 */
 	@Override
-	public void transformPage(View page, float position) {
+	public void transformPage(@NonNull View page, float position) {
 		onPreTransform(page, position);
 		onTransform(page, position);
 		onPostTransform(page, position);
@@ -123,7 +124,7 @@ public abstract class ABaseTransformer implements PageTransformer {
 	 * @param min
 	 * @return
 	 */
-	protected static final float min(float val, float min) {
+	protected static float min(float val, float min) {
 		return val < min ? min : val;
 	}
 
