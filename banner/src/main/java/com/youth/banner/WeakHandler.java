@@ -16,9 +16,11 @@ public class WeakHandler {
     private final Handler.Callback mCallback; // hard reference to Callback. We need to keep callback in memory
     private final ExecHandler mExec;
     private Lock mLock = new ReentrantLock();
-    @SuppressWarnings("ConstantConditions")
+
     @VisibleForTesting
-    final ChainedRef mRunnables = new ChainedRef(mLock, null);
+    final ChainedRef mRunnables = new ChainedRef(mLock, () -> {
+
+    });
 
     /**
      * Default constructor associates this handler with the {@link Looper} for the

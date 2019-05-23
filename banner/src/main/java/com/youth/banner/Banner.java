@@ -2,9 +2,11 @@ package com.youth.banner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -57,7 +59,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
     private int lastPosition = 1;
     private int scaleType = 1;
     private List<String> titles;
-    private List imageUrls;
+    private List<Object> imageUrls;
     private List<View> imageViews;
     private List<ImageView> indicatorImages;
     private Context context;
@@ -65,7 +67,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
     private TextView bannerTitle, numIndicatorInside, numIndicator;
     private LinearLayout indicator, indicatorInside, titleView;
     private ImageView bannerDefaultImage;
-    private ImageLoaderInterface imageLoader;
+    private ImageLoaderInterface<ImageView> imageLoader;
     private BannerPagerAdapter adapter;
     private OnPageChangeListener mOnPageChangeListener;
     private BannerScroller mScroller;
@@ -230,7 +232,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         return this;
     }
 
-    public Banner setImages(List<?> imageUrls) {
+    public Banner setImages(List<Object> imageUrls) {
         this.imageUrls = imageUrls;
         this.count = imageUrls.size();
         return this;
@@ -293,7 +295,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
     }
 
     private void setBannerStyleUI() {
-        int visibility =count > 1 ? View.VISIBLE :View.GONE;
+        int visibility = count > 1 ? View.VISIBLE : View.GONE;
         switch (bannerStyle) {
             case BannerConfig.CIRCLE_INDICATOR:
                 indicator.setVisibility(visibility);
@@ -329,7 +331,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         }
     }
 
-    private void setImageList(List<?> imagesUrl) {
+    private void setImageList(List<Object> imagesUrl) {
         if (imagesUrl == null || imagesUrl.size() <= 0) {
             bannerDefaultImage.setVisibility(VISIBLE);
             Log.e(tag, "The image data set is empty.");
@@ -338,7 +340,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         bannerDefaultImage.setVisibility(GONE);
         initImages();
         for (int i = 0; i <= count + 1; i++) {
-            View imageView = null;
+            ImageView imageView = null;
             if (imageLoader != null) {
                 imageView = imageLoader.createImageView(context);
             }
@@ -355,10 +357,11 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
                 url = imagesUrl.get(i - 1);
             }
             imageViews.add(imageView);
-            if (imageLoader != null)
+            if (imageLoader != null) {
                 imageLoader.displayImage(context, url, imageView);
-            else
+            } else {
                 Log.e(tag, "Please set images loader.");
+            }
         }
     }
 
@@ -391,7 +394,6 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
                     view.setScaleType(ScaleType.MATRIX);
                     break;
             }
-
         }
     }
 
@@ -514,18 +516,13 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
             View view = imageViews.get(position);
 
             if (listener != null) {
-                view.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        listener.OnBannerClick(toRealPosition(position));
-                    }
-                });
+                view.setOnClickListener(v -> listener.OnBannerClick(toRealPosition(position)));
             }
             return view;
         }
 
         @Override
-        public void destroyItem(@NonNull ViewGroup container, int position,@NonNull Object object) {
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
 
@@ -566,7 +563,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
 
     @Override
     public void onPageSelected(int position) {
-        currentItem=position;
+        currentItem = position;
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageSelected(toRealPosition(position));
         }

@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class App extends Application {
-    public static List<?> images=new ArrayList<>();
+    public static List<Object> images=new ArrayList<>();
     public static List<String> titles=new ArrayList<>();
     public static int H,W;
     public static App app;
@@ -32,7 +32,7 @@ public class App extends Application {
         String[] urls = getResources().getStringArray(R.array.url);
         String[] tips = getResources().getStringArray(R.array.title);
         List<String> list = Arrays.asList(urls);
-        images = new ArrayList<>(list);
+        images = new ArrayList<Object>(list);
         List<String> list1 = Arrays.asList(tips);
         titles= new ArrayList<>(list1);
     }
